@@ -43,7 +43,7 @@ public class BlueprintAPIController {
         try {
             data = blueprintsServices.getBlueprintsByAuthor(authorName);
         } catch (BlueprintNotFoundException e) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>("ERROR 404",HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(data, HttpStatus.ACCEPTED);
     }
@@ -55,7 +55,7 @@ public class BlueprintAPIController {
         try {
             data = blueprintsServices.getBlueprint(authorName,bpName);
         } catch (BlueprintNotFoundException e) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>("ERROR 404",HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(data, HttpStatus.ACCEPTED);
     }
