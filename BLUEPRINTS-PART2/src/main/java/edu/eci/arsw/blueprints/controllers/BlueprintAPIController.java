@@ -73,11 +73,15 @@ public class BlueprintAPIController {
     }
     
     @RequestMapping(method = RequestMethod.PUT, path = "{author}/{bpname}")
-    public ResponseEntity<?> putBlueprint(@RequestBody Blueprint b ) {
+    public ResponseEntity<?> putBlueprint(
+        @RequestBody Blueprint b,
+        @PathVariable("author") String authorName,
+        @PathVariable("bpname") String bpName)
+    {
         try {
-            blueprintsServices.addNewBlueprint(b);
+            blueprintsServices.update(b, authorName, bpName);
             return new ResponseEntity<>(HttpStatus.CREATED);
-        } catch (BlueprintPersistenceException e) {
+        } catch (BlueprintNotFoundException e) {
             return new ResponseEntity<>("ERROR 403",HttpStatus.FORBIDDEN);
         }
     }

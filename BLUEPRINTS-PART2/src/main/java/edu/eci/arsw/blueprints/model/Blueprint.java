@@ -12,6 +12,18 @@ public class Blueprint {
     private String author=null;
     
     private List<Point> points=null;
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public void setPoints(List<Point> points) {
+        this.points = points;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
     
     private String name=null;
             

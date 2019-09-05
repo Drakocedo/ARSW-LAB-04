@@ -34,7 +34,11 @@ public class BlueprintsServices {
     @Qualifier("redundancy")
     @Autowired
     BlueprintFilter bppFilter;
-
+    
+    public void update(Blueprint b, String author, String name) throws BlueprintNotFoundException{
+        bpp.update(b, author, name);
+    }
+    
     public void addNewBlueprint(Blueprint bp) throws BlueprintPersistenceException{
         bpp.saveBlueprint(bp);
     }
