@@ -12,11 +12,13 @@ import java.util.logging.Logger;
 
 import edu.eci.arsw.blueprints.model.Blueprint;
 import edu.eci.arsw.blueprints.persistence.BlueprintNotFoundException;
+import edu.eci.arsw.blueprints.persistence.BlueprintPersistenceException;
 import edu.eci.arsw.blueprints.services.BlueprintsServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -59,5 +61,26 @@ public class BlueprintAPIController {
         }
         return new ResponseEntity<>(data, HttpStatus.ACCEPTED);
     }
+    
+    @RequestMapping(method = RequestMethod.POST)
+    public ResponseEntity<?> newBlueprint(@RequestBody Blueprint b ) {
+        try {
+            blueprintsServices.addNewBlueprint(b);
+            return new ResponseEntity<>(HttpStatus.CREATED);
+        } catch (BlueprintPersistenceException e) {
+            return new ResponseEntity<>("ERROR 403",HttpStatus.FORBIDDEN);
+        }
+    }
+    
+    @RequestMapping(method = RequestMethod.PUT, path = "{author}/{bpname}")
+    public ResponseEntity<?> putBlueprint(@RequestBody Blueprint b ) {
+        try {
+            blueprintsServices.addNewBlueprint(b);
+            return new ResponseEntity<>(HttpStatus.CREATED);
+        } catch (BlueprintPersistenceException e) {
+            return new ResponseEntity<>("ERROR 403",HttpStatus.FORBIDDEN);
+        }
+    }
+    
 
 }
