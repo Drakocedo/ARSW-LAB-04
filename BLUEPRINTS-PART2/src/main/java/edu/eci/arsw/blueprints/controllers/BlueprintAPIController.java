@@ -35,7 +35,12 @@ public class BlueprintAPIController {
 
     @RequestMapping(method = RequestMethod.GET)
     public ResponseEntity<?> manejadorGetRecursoBlueprint() {
-        Set<Blueprint> data = blueprintsServices.getAllBlueprints();
+        Set<Blueprint> data = null;
+        try{
+            data = blueprintsServices.getAllBlueprints();
+        }catch (Exception ex){
+            return new ResponseEntity<>("ERROR 500",HttpStatus.INTERNAL_SERVER_ERROR);
+        }
         return new ResponseEntity<>(data, HttpStatus.ACCEPTED);
     }
 
