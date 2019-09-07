@@ -88,6 +88,7 @@
     }
     ```
     La imagen muestra su funcionamiento.
+    
     ![](img/media/author_leonardo.JPG)
 
 * *Modify the controller so that it now accepts* `GET` *requests to the resource* `/blueprints/{author}/{bpname}` *, which returns using a* `JSON` *representation only ONE plane, in this case the one made by* `{author}` *and whose name is* `{bpname}`*. Again, if there is no such author, you must respond with the HTTP 404 error code.*
@@ -114,6 +115,7 @@
     }
     ```
     La imagen muestra su funcionamiento.
+
     ![](img/media/author_blue.JPG)
 
 ## PART II
@@ -148,6 +150,7 @@
 * *Taking into account the author and name of the registered plan, verify that it can be obtained through a* `GET` *request to the corresponding resource* `/blueprints/{author}/{bpname}`
 
     La imagen muestra su funcionamiento.
+
     ![](img/media/add_post.JPG)
 
 * *Add support to the* `PUT` *verb for resources of the form* `/blueprints/{author}/{bpname}`*, so that it is possible to update a specific plane.*
