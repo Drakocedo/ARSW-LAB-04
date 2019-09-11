@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
 import org.springframework.stereotype.Component;
 
@@ -23,8 +24,8 @@ import org.springframework.stereotype.Component;
  */
 @Component("InMemoryBlueprintPersistence")
 public class InMemoryBlueprintPersistence implements BlueprintsPersistence {
-
-    private final Map<Tuple<String, String>, Blueprint> blueprints = new HashMap<>();
+    
+    private final ConcurrentHashMap<Tuple<String, String>, Blueprint> blueprints = new ConcurrentHashMap<>();
 
     public InMemoryBlueprintPersistence() {
         //load stub data
@@ -82,12 +83,13 @@ public class InMemoryBlueprintPersistence implements BlueprintsPersistence {
 
     @Override
     public void update(Blueprint b, String author, String name) throws BlueprintNotFoundException {
-        Blueprint antes = getBlueprint(author, name);
-        Tuple<String, String> antesTuple = new Tuple<>(author,name);
-        Tuple<String, String> nuevaTuple = new Tuple<>(b.getAuthor(),b.getName());
-        blueprints.remove(antesTuple);
-        blueprints.put(nuevaTuple, b);
-
+        synchronized(blueprints){
+            Blueprint antes = getBlueprint(author, name);
+            Tuple<String, String> antesTuple = new Tuple<>(author,name);
+            Tuple<String, String> nuevaTuple = new Tuple<>(b.getAuthor(),b.getName());
+            blueprints.remove(antesTuple);
+            blueprints.put(nuevaTuple, b);
+        }
     }
 
 
