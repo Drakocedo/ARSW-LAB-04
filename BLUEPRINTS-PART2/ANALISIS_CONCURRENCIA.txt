@@ -1,0 +1,6 @@
+What race conditions could occur?
+Al momento de actualizar un plano se puede presentar condiciones de carrera cuando dos o más usuarios estén actualizando un plano específico.
+
+What are the respective critical regions?
+Las regiones críticas son la parte del código en la cual se realizan los cambios sobre el Map de planos y ocurre principalmente cuando se producen las peticiones PUT.
+

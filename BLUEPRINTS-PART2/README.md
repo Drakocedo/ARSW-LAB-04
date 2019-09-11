@@ -1,5 +1,8 @@
 ## Compile and run instructions
-
+En el directorio `BLUEPRINTS-PART2`:
+* **Para compilar:** Ejecutar `mvn package`.
+* **Para empezar el servidor:** Ejecutar `mvn spring-boot:run`.
+* **Para ejecutar pruebas:** Ejectuar `mvn test`.
 ## Part I
 * *Integrate to the base project supplied the Beans developed in the previous exercise. Just copy the classes, NOT the configuration files. Rectify that the dependency injection scheme is correctly configured with the* `@Service` *and* `@Autowired` *annotations.*
 
@@ -179,3 +182,11 @@
         }
     }
     ```
+## Part III
+*The* `BlueprintsRESTAPI` *component will work in a concurrent environment. That is, it will attend multiple requests simultaneously (with the stack of applications used, these requests will be attended by default across multiple threads). Given the above, you should review your API (once it works), and identify:*
+  * *What race conditions could occur?*
+  * *What are the respective critical regions?*
+  
+*Set the code to suppress race conditions. Keep in mind that simply synchronizing access to persistence/query operations will significantly degrade the API performance, so you should look for alternative strategies.*
+
+Realizado en ANALISIS_CONCURRENCIA.txt
