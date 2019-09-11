@@ -2,7 +2,7 @@
 En el directorio `BLUEPRINTS-PART2`:
 * **Para compilar:** Ejecutar `mvn package`.
 * **Para empezar el servidor:** Ejecutar `mvn spring-boot:run`.
-* **Para ejecutar pruebas:** Ejectuar `mvn test`.
+
 ## Part I
 * *Integrate to the base project supplied the Beans developed in the previous exercise. Just copy the classes, NOT the configuration files. Rectify that the dependency injection scheme is correctly configured with the* `@Service` *and* `@Autowired` *annotations.*
 

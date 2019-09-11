@@ -11,13 +11,12 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import static junit.framework.TestCase.assertTrue;
 
-@RunWith(SpringRunner.class)
-@SpringBootTest()
+
 public class ApplicationServicesTests {
 
     
     //RestaurantOrderServicesStub ros;
-
+/*
     
     @Test
     public void contextLoads() {
@@ -25,5 +24,6 @@ public class ApplicationServicesTests {
 
         
     }
+*/
 
 }
